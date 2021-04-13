@@ -45,7 +45,7 @@ class PokemonListFragment : Fragment() {
 
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://pokeapi.co/api/v2")
+            .baseUrl("https://pokeapi.co/api/v2/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
@@ -53,7 +53,7 @@ class PokemonListFragment : Fragment() {
 
         pokeApi.getPokemonList().enqueue(object: Callback<PokemonResponse> {
             override fun onResponse(call: Call<PokemonResponse>, response: Response<PokemonResponse>) {
-                if(response.isSuccessful && response.body != null){
+                if(response.isSuccessful && response.body() != null){
                     val pokemonResponse: PokemonResponse = response.body()!!
                     adapter.updateList(pokemonResponse.results)
                 }
@@ -62,17 +62,6 @@ class PokemonListFragment : Fragment() {
             override fun onFailure(call: Call<PokemonResponse>, t: Throwable) {
                 //TODO("Not yet implemented")
             }
-
-
         })
-
-        val pokeList : ArrayList<Pokemon> = arrayListOf<Pokemon>().apply {
-            add(Pokemon("Pikachu"))
-            add(Pokemon("Salameche"))
-            add(Pokemon("Carapuce"))
-            add(Pokemon("Herbizarre"))
-        }
-
-        adapter.updateList(pokeList)
     }
 }
