@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.esiea3a.R
@@ -23,8 +24,11 @@ import retrofit2.converter.gson.GsonConverterFactory
 class PokemonListFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
-    private val adapter = PokemonAdaptater(listOf())
+
+    private val adapter = PokemonAdaptater(listOf(), ::onClickedPokemon)
+
     private val layoutManager = LinearLayoutManager(context)
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -44,7 +48,7 @@ class PokemonListFragment : Fragment() {
         }
 
 
-        val retrofit = Retrofit.Builder()
+        val retrofit :Retrofit = Retrofit.Builder()
             .baseUrl("https://pokeapi.co/api/v2/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
@@ -63,5 +67,9 @@ class PokemonListFragment : Fragment() {
                 //TODO("Not yet implemented")
             }
         })
+    }
+
+    private fun onClickedPokemon(pokemon: Pokemon){
+        findNavController().navigate(R.id.navigateToPokemonDetailFragment)
     }
 }
