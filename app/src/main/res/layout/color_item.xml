@@ -7,10 +7,10 @@
     android:layout_height="50dp">
 
     <TextView
-        android:id="@+id/pokemon_name"
+        android:id="@+id/color_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:text="Pikachu"
+        tools:text="Black"
         android:textAlignment="center"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"

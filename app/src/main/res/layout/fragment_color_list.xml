@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.list.PokemonListFragment">
+    tools:context=".presentation.list.ColorListFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/pokemon_recyclerview"
+        android:id="@+id/color_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintTop_toTopOf="parent"

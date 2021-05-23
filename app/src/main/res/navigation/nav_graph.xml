@@ -3,26 +3,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/PokemonListFragment">
+    app:startDestination="@id/ColorListFragment">
 
     <fragment
-        android:id="@+id/PokemonListFragment"
-        android:name="com.example.esiea3a.presentation.list.PokemonListFragment"
+        android:id="@+id/ColorListFragment"
+        android:name="com.example.esiea3a.presentation.list.ColorListFragment"
         android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_pokemon_list">
+        tools:layout="@layout/fragment_color_list">
 
         <action
-            android:id="@+id/navigateToPokemonDetailFragment"
-            app:destination="@id/PokemonDetailFragment" />
+            android:id="@+id/navigateToColorDetailFragment"
+            app:destination="@id/ColorDetailFragment" />
     </fragment>
     <fragment
-        android:id="@+id/PokemonDetailFragment"
-        android:name="com.example.esiea3a.presentation.detail.PokemonDetailFragment"
+        android:id="@+id/ColorDetailFragment"
+        android:name="com.example.esiea3a.presentation.detail.ColorDetailFragment"
         android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_pokemon_detail">
+        tools:layout="@layout/fragment_color_detail">
+        <argument
+            android:name="colorId"
+            app:argType="integer"
+            android:defaultValue="-1" />
 
         <action
-            android:id="@+id/navigateToPokemonListFragment"
-            app:destination="@id/PokemonListFragment" />
+            android:id="@+id/navigateToColorListFragment"
+            app:destination="@id/ColorListFragment" />
     </fragment>
 </navigation>

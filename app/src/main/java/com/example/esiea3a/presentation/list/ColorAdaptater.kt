@@ -6,8 +6,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.esiea3a.R
+import com.example.esiea3a.presentation.api.ColorListResponse
 
-class PokemonAdaptater(private var dataSet: List<Pokemon>, var listener: ((Pokemon) -> Unit)? = null) : RecyclerView.Adapter<PokemonAdaptater.ViewHolder>() {
+class ColorAdaptater(private var dataSet: List<ColorListResponse>, var listener: ((Int) -> Unit)? = null) : RecyclerView.Adapter<ColorAdaptater.ViewHolder>() {
 
     /**
      * Provide a reference to the type of views that you are using
@@ -18,11 +19,11 @@ class PokemonAdaptater(private var dataSet: List<Pokemon>, var listener: ((Pokem
 
         init {
             // Define click listener for the ViewHolder's View.
-            textView = view.findViewById(R.id.pokemon_name)
+            textView = view.findViewById(R.id.color_name)
         }
     }
 
-    fun updateList(list: List<Pokemon>){
+    fun updateList(list: List<ColorListResponse>){
         dataSet = list
         notifyDataSetChanged()
     }
@@ -30,7 +31,7 @@ class PokemonAdaptater(private var dataSet: List<Pokemon>, var listener: ((Pokem
     // Create new views (invoked by the layout manager)
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         // Create a new view, which defines the UI of the list item
-        val view = LayoutInflater.from(viewGroup.context).inflate(R.layout.pokemon_item, viewGroup, false)
+        val view = LayoutInflater.from(viewGroup.context).inflate(R.layout.color_item, viewGroup, false)
 
         return ViewHolder(view)
     }
@@ -40,10 +41,10 @@ class PokemonAdaptater(private var dataSet: List<Pokemon>, var listener: ((Pokem
 
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
-        val pokemon : Pokemon = dataSet[position]
-        viewHolder.textView.text = pokemon.name
+        val colorListResponse : com.example.esiea3a.presentation.api.ColorListResponse = dataSet[position]
+        viewHolder.textView.text = colorListResponse.title
         viewHolder.itemView.setOnClickListener{
-            listener?.invoke(pokemon)
+            listener?.invoke(position)
         }
     }
 
